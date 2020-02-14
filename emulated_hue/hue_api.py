@@ -426,26 +426,25 @@ class HueApi:
     @check_request
     async def get_description(self, request):
         """Serve the service description file."""
-        xml_template = """
-            <?xml version="1.0" encoding="UTF-8" ?>
-                <root xmlns="urn:schemas-upnp-org:device-1-0">
-                    <specVersion>
-                    <major>1</major>
-                    <minor>0</minor>
-                    </specVersion>
-                    <URLBase>http://{0}:{1}/</URLBase>
-                    <device>
-                    <deviceType>urn:schemas-upnp-org:device:Basic:1</deviceType>
-                    <friendlyName>Home Assistant Bridge ({0})</friendlyName>
-                    <manufacturer>Royal Philips Electronics</manufacturer>
-                    <manufacturerURL>http://www.philips.com</manufacturerURL>
-                    <modelDescription>Philips hue Personal Wireless Lighting</modelDescription>
-                    <modelName>Philips hue bridge 2015</modelName>
-                    <modelNumber>BSB002</modelNumber>
-                    <modelURL>http://www.meethue.com</modelURL>
-                    <serialNumber>{0}</serialNumber>
-                    <UDN>uuid:{0}</UDN>
-                    </device>
+        xml_template = """<?xml version="1.0" encoding="UTF-8" ?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<URLBase>http://{0}:{1}/</URLBase>
+<device>
+<deviceType>urn:schemas-upnp-org:device:Basic:1</deviceType>
+<friendlyName>Home Assistant Bridge ({0})</friendlyName>
+<manufacturer>Royal Philips Electronics</manufacturer>
+<manufacturerURL>http://www.philips.com</manufacturerURL>
+<modelDescription>Philips hue Personal Wireless Lighting</modelDescription>
+<modelName>Philips hue bridge 2015</modelName>
+<modelNumber>BSB002</modelNumber>
+<modelURL>http://www.meethue.com</modelURL>
+<serialNumber>{0}</serialNumber>
+<UDN>uuid:{0}</UDN>
+</device>
                 </root>"""
         resp_text = xml_template.format(
             self.config.host_ip_addr,
